@@ -28,8 +28,8 @@ class AccessLogReader:
         extracted_values.append(ip_address)
 
         timestamp_string = AccessLogReader.regex_value_extractor(string_from_list, Constants.TIMESTAMP_REGEX)
-        # timestamp = AccessLogReader.string_to_datetime_converter(timestamp_string)
-        extracted_values.append(timestamp_string)
+        timestamp = AccessLogReader.string_to_datetime_converter(timestamp_string)
+        extracted_values.append(timestamp)
 
         http_method = AccessLogReader.regex_value_extractor(string_from_list, Constants.HTTP_METHOD_REGEX)
         extracted_values.append(http_method)

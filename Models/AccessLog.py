@@ -7,7 +7,7 @@ class AccessLog(Base):
 
     id = Column(Integer, primary_key=True)
     ip_address = Column(String)
-    timestamp = Column(String)
+    timestamp = Column(DateTime)
     http_method = Column(String)
     endpoint = Column(String)
     http_version = Column(String)
