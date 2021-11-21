@@ -5,7 +5,7 @@ from Constants import Constants
 
 Base = declarative_base()
 
-engine = create_engine(Constants.DATABASE_PATH, echo=True)
+engine = create_engine(Constants.DATABASE_PATH, echo=False)
 
 SessionCreator = sessionmaker(bind=engine)
 session_creator = SessionCreator()
