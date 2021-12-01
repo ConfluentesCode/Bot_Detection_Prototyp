@@ -24,5 +24,5 @@ if __name__ == '__main__':
     # create Sessions from AccessLogs
 
     session_builder = UserSessionBuilder()
-    session_builder.create_user_sessions_from_access_log(user_ip_list)
+    session_builder.create_user_sessions(user_ip_list)
 

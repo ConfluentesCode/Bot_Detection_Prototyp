@@ -6,18 +6,26 @@ class UserSessionBuilder:
     data_loader = DataLoader()
     data_saver = DataSaver()
 
-    def create_user_sessions_from_access_log(self, user_list: list):
+    def create_user_sessions(self, user_ip_list: list):
 
-        for user in user_list:
-            session_access_logs = self.data_loader.get_user_session_from_ip(user)
-            session_information = session_access_logs[0]
-            self.data_saver.save_user_session(session_information)
-            session_id = self.get_session_id_of_created_session(session_information.ip_address)
+        for current_user_ip in user_ip_list:
+            self.create_user_session_from_access_logs(current_user_ip)
 
-            for session_request in session_access_logs:
-                self.data_saver.save_request_from_session(session_request, session_id)
+    def create_user_session_from_access_logs(self, user_ip):
+        session_access_logs = self.data_loader.get_user_session_from_ip(user_ip)
+        session_information = session_access_logs[0]
 
-    def get_session_id_of_created_session(self, ip_address):
+        self.data_saver.save_user_session(session_information)
+
+        self.safe_requests_of_session(session_access_logs, user_ip)
+
+    def safe_requests_of_session(self, user_access_log, user_ip):
+        session_id = self.get_session_id_of_user(user_ip)
+
+        for session_request in user_access_log:
+            self.data_saver.save_request_from_session(session_request, session_id)
+
+    def get_session_id_of_user(self, ip_address):
         result = self.data_loader.get_session_id_from_ip_address(ip_address)
 
         return result
