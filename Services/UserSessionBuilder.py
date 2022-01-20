@@ -21,9 +21,11 @@ class UserSessionBuilder:
 
     def safe_requests_of_session(self, user_access_log, user_ip):
         session_id = self.get_session_id_of_user(user_ip)
+        type_extractor = RequestTypeExtractor()
 
         for session_request in user_access_log:
-            self.data_saver.save_request_from_session(session_request, session_id)
+            request_type = type_extractor.get_request_type_from_uri(session_request.uri)
+            self.data_saver.save_request_from_session(session_request, request_type, session_id)
 
     def get_session_id_of_user(self, ip_address):
         result = self.data_loader.get_session_id_from_ip_address(ip_address)

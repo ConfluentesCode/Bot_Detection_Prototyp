@@ -27,7 +27,8 @@ class DataSaver:
         self.session_creator.add(session_model)
         self.session_creator.commit()
 
-    def save_request_from_session(self, session_access_log, session_id):
-        request_model = Request(request=session_access_log.uri, timestamp=session_access_log.timestamp, session_id=session_id)
+    def save_request_from_session(self, session_access_log, request_type, session_id):
+        request_model = Request(uri=session_access_log.uri, request_type=request_type, endpoint=session_access_log.endpoint,  timestamp=session_access_log.timestamp, status_code=session_access_log.status_code,
+                                session_id=session_id)
         self.session_creator.add(request_model)
         self.session_creator.commit()
