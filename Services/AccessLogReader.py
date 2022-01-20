@@ -1,7 +1,7 @@
-import csv
 import re as regex
-from Constants import Constants
 from datetime import datetime
+
+from Constants import Constants
 
 
 class AccessLogReader:
@@ -10,8 +10,8 @@ class AccessLogReader:
         self.access_log_list = []
 
     def read_csv_file(self, file_path: str) -> list:
-        with open(file_path) as csv_file:
-            reader = csv.reader(csv_file, delimiter='\n')
+        with open(file_path) as file:
+            reader = file.readlines()
 
             for row in reader:
                 value_set = AccessLogReader.extract_values_from_row(row)
@@ -21,32 +21,31 @@ class AccessLogReader:
 
     @staticmethod
     def extract_values_from_row(row: list) -> list:
-        string_from_list = row[0]
         extracted_values = []
 
-        ip_address = AccessLogReader.regex_value_extractor(string_from_list, Constants.IP_ADDRESS_REGEX)
+        ip_address = AccessLogReader.regex_value_extractor(row, Constants.IP_ADDRESS_REGEX)
         extracted_values.append(ip_address)
 
-        timestamp_string = AccessLogReader.regex_value_extractor(string_from_list, Constants.TIMESTAMP_REGEX)
+        timestamp_string = AccessLogReader.regex_value_extractor(row, Constants.TIMESTAMP_REGEX)
         timestamp = AccessLogReader.string_to_datetime_converter(timestamp_string)
         extracted_values.append(timestamp)
 
-        http_method = AccessLogReader.regex_value_extractor(string_from_list, Constants.HTTP_METHOD_REGEX)
+        http_method = AccessLogReader.regex_value_extractor(row, Constants.HTTP_METHOD_REGEX)
         extracted_values.append(http_method)
 
-        url = AccessLogReader.regex_value_extractor(string_from_list, Constants.URL_REGEX)
+        url = AccessLogReader.regex_value_extractor(row, Constants.URL_REGEX)
         extracted_values.append(url)
 
-        status_code = AccessLogReader.regex_value_extractor(string_from_list, Constants.RESPONSE_CODE_REGEX)
+        status_code = AccessLogReader.regex_value_extractor(row, Constants.RESPONSE_CODE_REGEX)
         extracted_values.append(status_code)
 
-        http_version = AccessLogReader.regex_value_extractor(string_from_list, Constants.HTTP_VERSION_REGEX)
+        http_version = AccessLogReader.regex_value_extractor(row, Constants.HTTP_VERSION_REGEX)
         extracted_values.append(http_version)
 
-        endpoint = AccessLogReader.get_endpoint_from_access_log(string_from_list)
+        endpoint = AccessLogReader.get_endpoint_from_access_log(row)
         extracted_values.append(endpoint)
 
-        user_agent = AccessLogReader.get_user_agent_string_from_access_log(string_from_list)
+        user_agent = AccessLogReader.get_user_agent_string_from_access_log(row)
         extracted_values.append(user_agent)
 
         return extracted_values
