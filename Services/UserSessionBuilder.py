@@ -1,10 +1,13 @@
 from Services.DataSaver import DataSaver
 from Services.DataLoader import DataLoader
+from Services.BotSessionIdentifier import BotSessionIdentifier
+from Services.RequestTypeExtractor import RequestTypeExtractor
 
 
 class UserSessionBuilder:
     data_loader = DataLoader()
     data_saver = DataSaver()
+    session_identifier = BotSessionIdentifier()
 
     def create_user_sessions(self, user_ip_list: list):
 
@@ -13,10 +16,13 @@ class UserSessionBuilder:
 
     def create_user_session_from_access_logs(self, user_ip):
         session_access_logs = self.data_loader.get_user_session_from_ip(user_ip)
-        session_information = session_access_logs[0]
 
-        self.data_saver.save_user_session(session_information)
+        session_ip = session_access_logs[0].ip_address
+        session_user_agent = session_access_logs[0].user_agent
 
+        is_bot_session = self.session_identifier.is_user_session_from_bot(session_user_agent, session_ip)
+
+        self.data_saver.save_user_session(session_ip, session_user_agent, is_bot_session)
         self.safe_requests_of_session(session_access_logs, user_ip)
 
     def safe_requests_of_session(self, user_access_log, user_ip):

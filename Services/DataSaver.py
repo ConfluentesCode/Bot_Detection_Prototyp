@@ -2,7 +2,6 @@ from DatabaseConnector.DatabaseSettings import SessionCreator
 from Models.AccessLog import AccessLog
 from Models.Session import Session
 from Models.Request import Request
-from datetime import datetime
 
 
 # TODO ORM verstehen
@@ -21,9 +20,9 @@ class DataSaver:
         self.session_creator.commit()
 
     # Annahme ist, dass der user-agent waehrend der sesssion identisch bleibt und die ip-addresse nur einmal auftaucht
-    def save_user_session(self, first_session_entry: list):
-        session_model = Session(session_ip_address=first_session_entry.ip_address,
-                                session_useragent=first_session_entry.user_agent, is_Bot=True)
+    def save_user_session(self, ip_address, user_agent, is_bot):
+        session_model = Session(session_ip_address=ip_address,
+                                session_useragent=user_agent, is_Bot=is_bot)
         self.session_creator.add(session_model)
         self.session_creator.commit()
 

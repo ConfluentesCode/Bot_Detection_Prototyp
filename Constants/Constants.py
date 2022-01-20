@@ -1,5 +1,6 @@
 ACCESS_LOG_FILE_PATH = '/Users/bjarneschroeder/PycharmProjects/Bot_Detection_Prototyp/InputFiles/logfiles.csv'
 DATABASE_PATH = 'sqlite:////Users/bjarneschroeder/PycharmProjects/Bot_Detection_Prototyp/DatabaseConnector/Database/BotDetection.db'
+UDGER_PATH = '/Users/bjarneschroeder/PycharmProjects/Bot_Detection_Prototyp/DatabaseConnector/Database/'
 
 IP_ADDRESS_REGEX = r"\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b"
 TIMESTAMP_REGEX = r"\d{2}/(Jan|Feb|Mar|Apr|May|Jun|Jul|Aug|Sep|Oct|Nov|Dec)/\d{4}:\d{2}:\d{2}:\d{2} \+\d{4}"
