@@ -1,7 +1,7 @@
 from DatabaseConnector.Services.DataSaver import DataSaver
 from DatabaseConnector.Services.DataLoader import DataLoader
-from Services.BotSessionIdentifier import BotSessionIdentifier
-from Services.RequestTypeExtractor import RequestTypeExtractor
+from DataPreparer.Services.BotSessionIdentifier import BotSessionIdentifier
+from DataPreparer.Services.RequestTypeExtractor import RequestTypeExtractor
 
 
 class UserSessionBuilder:

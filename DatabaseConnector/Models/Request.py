@@ -1,7 +1,7 @@
 from sqlalchemy import *
 
 from DatabaseConnector.DatabaseSettings import Base
-from Enum.RequestType import RequestType
+from DataPreparer.Enums.RequestType import RequestType
 
 
 class Request(Base):

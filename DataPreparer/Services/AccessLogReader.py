@@ -1,7 +1,7 @@
 import re as regex
 from datetime import datetime
 
-from Constants import Constants
+from DataPreparer.Constants import Constants
 
 
 class AccessLogReader:

@@ -1,6 +1,6 @@
-from Constants import Constants
-from Services.AccessLogReader import AccessLogReader
-from Services.UserSessionBuilder import UserSessionBuilder
+from DataPreparer.Constants import Constants
+from DataPreparer.Services.AccessLogReader import AccessLogReader
+from DataPreparer.Services.UserSessionBuilder import UserSessionBuilder
 from DatabaseConnector.Services.DataSaver import DataSaver
 from DatabaseConnector.Services.DataLoader import DataLoader
 

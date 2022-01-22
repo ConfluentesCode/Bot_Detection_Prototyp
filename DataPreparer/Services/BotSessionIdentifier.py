@@ -1,5 +1,5 @@
 from udger import Udger
-from Constants import Constants
+from DataPreparer.Constants import Constants
 
 
 class BotSessionIdentifier:

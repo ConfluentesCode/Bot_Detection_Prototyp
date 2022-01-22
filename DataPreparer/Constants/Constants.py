@@ -1,4 +1,4 @@
-ACCESS_LOG_FILE_PATH = '/Users/bjarneschroeder/PycharmProjects/Bot_Detection_Prototyp/InputFiles/logfiles_iran_short.log'
+ACCESS_LOG_FILE_PATH = '/Users/bjarneschroeder/PycharmProjects/Bot_Detection_Prototyp/DataPreparer/InputFiles/logfiles_iran_short.log'
 UDGER_PATH = '/Users/bjarneschroeder/PycharmProjects/Bot_Detection_Prototyp/DatabaseConnector/Database/'
 
 IP_ADDRESS_REGEX = r"\b\d{1,3}\.\d{1,3}\.\d{1,3}\.\d{1,3}\b"
@@ -17,4 +17,4 @@ COMPRESSED_GROUP_REGEX = r"(.zip|.rar|.gzip|.tar|.gz|.7z)"
 
 DATETIME_FORMAT = "%d/%b/%Y:%H:%M:%S %z"
 
-FILL_DATABASE_TOGGLE = False
+FILL_DATABASE_TOGGLE = True
