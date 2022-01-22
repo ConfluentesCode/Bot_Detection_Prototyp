@@ -1,0 +1,2 @@
+ACCESS_LOG_FILE_PATH = '/Users/bjarneschroeder/PycharmProjects/Bot_Detection_Prototyp/DataPreparer/InputFiles/logfiles_iran_short.log'
+UDGER_PATH = '/Users/bjarneschroeder/PycharmProjects/Bot_Detection_Prototyp/DatabaseConnector/Database/'

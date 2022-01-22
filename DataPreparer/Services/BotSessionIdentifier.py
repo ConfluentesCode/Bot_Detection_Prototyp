@@ -1,9 +1,9 @@
 from udger import Udger
-from DataPreparer.Constants import Constants
+from DataPreparer.Constants import PathConstants
 
 
 class BotSessionIdentifier:
-    udger = Udger(Constants.UDGER_PATH)
+    udger = Udger(PathConstants.UDGER_PATH)
 
     def is_user_session_from_bot(self, session_user_agent, session_ip_address):
         ua_check_result = self.verify_user_agent(session_user_agent)

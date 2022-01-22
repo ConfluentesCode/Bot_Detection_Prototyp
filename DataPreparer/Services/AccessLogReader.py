@@ -1,7 +1,8 @@
 import re as regex
 from datetime import datetime
 
-from DataPreparer.Constants import Constants
+from DataPreparer.Constants import FormatConstants
+from DataPreparer.Constants import RegexConstants
 
 
 class AccessLogReader:
@@ -23,23 +24,23 @@ class AccessLogReader:
     def extract_values_from_row(row: list) -> list:
         extracted_values = []
 
-        ip_address = AccessLogReader.regex_value_extractor(row, Constants.IP_ADDRESS_REGEX)
+        ip_address = AccessLogReader.regex_value_extractor(row, RegexConstants.IP_ADDRESS_REGEX)
         extracted_values.append(ip_address)
 
-        timestamp_string = AccessLogReader.regex_value_extractor(row, Constants.TIMESTAMP_REGEX)
+        timestamp_string = AccessLogReader.regex_value_extractor(row, RegexConstants.TIMESTAMP_REGEX)
         timestamp = AccessLogReader.string_to_datetime_converter(timestamp_string)
         extracted_values.append(timestamp)
 
-        http_method = AccessLogReader.regex_value_extractor(row, Constants.HTTP_METHOD_REGEX)
+        http_method = AccessLogReader.regex_value_extractor(row, RegexConstants.HTTP_METHOD_REGEX)
         extracted_values.append(http_method)
 
-        url = AccessLogReader.regex_value_extractor(row, Constants.URL_REGEX)
+        url = AccessLogReader.regex_value_extractor(row, RegexConstants.URL_REGEX)
         extracted_values.append(url)
 
-        status_code = AccessLogReader.regex_value_extractor(row, Constants.RESPONSE_CODE_REGEX)
+        status_code = AccessLogReader.regex_value_extractor(row, RegexConstants.RESPONSE_CODE_REGEX)
         extracted_values.append(status_code)
 
-        http_version = AccessLogReader.regex_value_extractor(row, Constants.HTTP_VERSION_REGEX)
+        http_version = AccessLogReader.regex_value_extractor(row, RegexConstants.HTTP_VERSION_REGEX)
         extracted_values.append(http_version)
 
         endpoint = AccessLogReader.get_endpoint_from_access_log(row)
@@ -52,7 +53,7 @@ class AccessLogReader:
 
     @staticmethod
     def string_to_datetime_converter(date_string: str) -> datetime:
-        datetime_object = datetime.strptime(date_string, Constants.DATETIME_FORMAT)
+        datetime_object = datetime.strptime(date_string, FormatConstants.DATETIME_FORMAT)
 
         return datetime_object
 
@@ -82,10 +83,10 @@ class AccessLogReader:
 
         endpoint_without_http_method = AccessLogReader.regex_substring_remover(
             substring_with_endpoint,
-            Constants.HTTP_METHOD_REGEX
+            RegexConstants.HTTP_METHOD_REGEX
         )
 
-        endpoint = AccessLogReader.regex_substring_remover(endpoint_without_http_method, Constants.HTTP_VERSION_REGEX)
+        endpoint = AccessLogReader.regex_substring_remover(endpoint_without_http_method, RegexConstants.HTTP_VERSION_REGEX)
 
         endpoint_without_whitespace = endpoint.replace(' ', '')
 

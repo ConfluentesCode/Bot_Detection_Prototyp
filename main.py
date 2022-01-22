@@ -1,11 +1,13 @@
-from DataPreparer.Constants import Constants
+from DataPreparer.Constants import PathConstants
 from DataPreparer.Services.AccessLogReader import AccessLogReader
 from DataPreparer.Services.UserSessionBuilder import UserSessionBuilder
 from DatabaseConnector.Services.DataSaver import DataSaver
 from DatabaseConnector.Services.DataLoader import DataLoader
 
 
-file_path = Constants.ACCESS_LOG_FILE_PATH
+file_path = PathConstants.ACCESS_LOG_FILE_PATH
+
+FILL_DATABASE_TOGGLE = True
 
 if __name__ == '__main__':
     # get information from access logs
@@ -13,7 +15,7 @@ if __name__ == '__main__':
     access_log_list = file_reader.read_csv_file(file_path)
 
     # write information from access log in sqlite database
-    if Constants.FILL_DATABASE_TOGGLE:
+    if FILL_DATABASE_TOGGLE:
         data_saver = DataSaver()
         data_saver.save_access_log_list(access_log_list)
 
