@@ -1,6 +1,6 @@
 from DatabaseConnector.DatabaseSettings import SessionCreator
-from Models.AccessLog import AccessLog
-from Models.Session import Session
+from DatabaseConnector.Models.AccessLog import AccessLog
+from DatabaseConnector.Models.Session import Session
 
 
 class DataLoader:

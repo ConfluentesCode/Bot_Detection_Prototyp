@@ -1,7 +1,7 @@
 from DatabaseConnector.DatabaseSettings import SessionCreator
-from Models.AccessLog import AccessLog
-from Models.Session import Session
-from Models.Request import Request
+from DatabaseConnector.Models.AccessLog import AccessLog
+from DatabaseConnector.Models.Session import Session
+from DatabaseConnector.Models.Request import Request
 
 
 # TODO ORM verstehen

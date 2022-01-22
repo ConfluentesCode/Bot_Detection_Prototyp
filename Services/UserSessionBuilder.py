@@ -1,5 +1,5 @@
-from Services.DataSaver import DataSaver
-from Services.DataLoader import DataLoader
+from DatabaseConnector.Services.DataSaver import DataSaver
+from DatabaseConnector.Services.DataLoader import DataLoader
 from Services.BotSessionIdentifier import BotSessionIdentifier
 from Services.RequestTypeExtractor import RequestTypeExtractor
 

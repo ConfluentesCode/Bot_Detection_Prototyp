@@ -13,3 +13,7 @@ Services/__pycache__/
 InputFiles/
 
 DatabaseConnector/Database
+
+DatabaseConnector/Services/__pycache__/
+
+DatabaseConnector/Models/__pycache__/

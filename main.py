@@ -1,8 +1,8 @@
 from Constants import Constants
 from Services.AccessLogReader import AccessLogReader
 from Services.UserSessionBuilder import UserSessionBuilder
-from Services.DataSaver import DataSaver
-from Services.DataLoader import DataLoader
+from DatabaseConnector.Services.DataSaver import DataSaver
+from DatabaseConnector.Services.DataLoader import DataLoader
 
 
 file_path = Constants.ACCESS_LOG_FILE_PATH
