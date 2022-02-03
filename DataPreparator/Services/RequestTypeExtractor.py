@@ -1,6 +1,6 @@
 import re as regex
-from DataPreparer.Constants import RegexConstants
-from DataPreparer.Enums.RequestType import RequestType
+from DataPreparator.Constants import RegexConstants
+from DataPreparator.Enums.RequestType import RequestType
 
 
 class RequestTypeExtractor:

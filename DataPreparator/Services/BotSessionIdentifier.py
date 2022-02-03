@@ -1,5 +1,5 @@
 from udger import Udger
-from DataPreparer.Constants import PathConstants
+from DataPreparator.Constants import PathConstants
 
 
 class BotSessionIdentifier:

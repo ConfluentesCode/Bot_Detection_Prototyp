@@ -1,6 +1,6 @@
-from DataPreparer.Constants import PathConstants
-from DataPreparer.Services.AccessLogReader import AccessLogReader
-from DataPreparer.Services.UserSessionBuilder import UserSessionBuilder
+from DataPreparator.Constants import PathConstants
+from DataPreparator.Services.AccessLogReader import AccessLogReader
+from DataPreparator.Services.UserSessionBuilder import UserSessionBuilder
 from DatabaseConnector.Services.DataSaver import DataSaver
 from DatabaseConnector.Services.DataLoader import DataLoader
 

@@ -18,8 +18,8 @@ DatabaseConnector/Services/__pycache__/
 
 DatabaseConnector/Models/__pycache__/
 
-DataPreparer/Constants/__pycache__/
+DataPreparator/Constants/__pycache__/
 
-DataPreparer/Enums/__pycache__/
+DataPreparator/Enums/__pycache__/
 
-DataPreparer/Services/__pycache__/
+DataPreparator/Services/__pycache__/

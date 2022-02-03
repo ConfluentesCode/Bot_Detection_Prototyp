@@ -1,8 +1,8 @@
 import re as regex
 from datetime import datetime
 
-from DataPreparer.Constants import FormatConstants
-from DataPreparer.Constants import RegexConstants
+from DataPreparator.Constants import FormatConstants
+from DataPreparator.Constants import RegexConstants
 
 
 class AccessLogReader:
@@ -21,7 +21,7 @@ class AccessLogReader:
         return self.access_log_list
 
     @staticmethod
-    def extract_values_from_row(row: list) -> list:
+    def extract_values_from_row(row: str) -> list:
         extracted_values = []
 
         ip_address = AccessLogReader.regex_value_extractor(row, RegexConstants.IP_ADDRESS_REGEX)
