@@ -12,7 +12,7 @@ FILL_DATABASE_TOGGLE = True
 if __name__ == '__main__':
     # get information from access logs
     file_reader = AccessLogReader()
-    access_log_list = file_reader.read_csv_file(file_path)
+    access_log_list = file_reader.read_file(file_path)
 
     # write information from access log in sqlite database
     if FILL_DATABASE_TOGGLE:

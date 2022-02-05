@@ -10,7 +10,7 @@ class AccessLogReader:
     def __init__(self):
         self.access_log_list = []
 
-    def read_csv_file(self, file_path: str) -> list:
+    def read_file(self, file_path: str) -> list:
         with open(file_path) as file:
             reader = file.readlines()
 
