@@ -9,9 +9,10 @@ class Request(Base):
 
     request_id = Column(Integer, primary_key=True)
     timestamp = Column(DateTime)
-    uri = Column(String)
-    endpoint = Column(String)
+    http_method = Column(String)
+    resource = Column(String)
     status_code = Column(String)
+    referer = Column(String)
     request_type = Column(Enum(RequestType))
     session_id = Column(Integer, ForeignKey('Session.session_id'))
 

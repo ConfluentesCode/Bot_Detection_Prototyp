@@ -30,7 +30,7 @@ class UserSessionBuilder:
         type_extractor = RequestTypeExtractor()
 
         for session_request in user_access_log:
-            request_type = type_extractor.get_request_type_from_uri(session_request.uri)
+            request_type = type_extractor.get_request_type_from_resource(session_request.resource)
             self.data_saver.save_request_from_session(session_request, request_type, session_id)
 
     def get_session_id_of_user(self, ip_address):
