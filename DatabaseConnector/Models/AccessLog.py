@@ -9,9 +9,9 @@ class AccessLog(Base):
     ip_address = Column(String)
     timestamp = Column(DateTime)
     http_method = Column(String)
-    endpoint = Column(String)
+    resource = Column(String)
     http_version = Column(String)
-    status_code = Column(String)
-    uri = Column(String)
+    status_code = Column(Integer)
+    referer = Column(String)
     user_agent = Column(String)
 
