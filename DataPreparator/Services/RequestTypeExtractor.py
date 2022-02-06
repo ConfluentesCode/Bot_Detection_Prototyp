@@ -10,6 +10,8 @@ class RequestTypeExtractor:
             return RequestType.TEXT
         elif self.is_resource_part_of_group(RegexConstants.WEB_GROUP_REGEX, resource):
             return RequestType.WEB
+        elif self.is_resource_part_of_group(RegexConstants.IMG_GROUP_REGEX, resource):
+            return RequestType.IMG
         elif self.is_resource_part_of_group(RegexConstants.DOC_GROUP_REGEX, resource):
             return RequestType.DOC
         elif self.is_resource_part_of_group(RegexConstants.AV_GROUP_REGEX, resource):
