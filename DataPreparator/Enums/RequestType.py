@@ -2,12 +2,12 @@ import enum
 
 
 class RequestType(enum.IntEnum):
-    TEXT = 1
-    WEB = 2
-    IMG = 3
-    DOC = 4
-    AV = 5
-    PROG = 6
-    COMPRESSED = 7
-    MALFORMED = 8
-    NOE = 9
+    TEXT = 0
+    WEB = 1
+    IMG = 2
+    DOC = 3
+    AV = 4
+    PROG = 5
+    COMPRESSED = 6
+    MALFORMED = 7
+    NOE = 8

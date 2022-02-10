@@ -1,6 +1,7 @@
 from DatabaseConnector.DatabaseSettings import SessionCreator
 from DatabaseConnector.Models.AccessLog import AccessLog
 from DatabaseConnector.Models.Session import Session
+from DatabaseConnector.Models.Request import Request
 
 
 class DataLoader:
@@ -23,5 +24,29 @@ class DataLoader:
 
         return session.session_id
 
+    def get_request_pattern(self, is_bot_pattern):
+        bot_pattern_list = []
+
+        bot_session_id_list = self.get_session_ids_from_sessions(is_bot_pattern)
+
+        for bot_session_id in bot_session_id_list:
+            request_pattern = self.get_request_pattern_from_session(bot_session_id)
+            bot_pattern_list.append(request_pattern)
+
+        return bot_pattern_list
+
+    def get_session_ids_from_sessions(self, is_bot_session):
+        query_result = self.session_creator.query(Session.session_id).filter(Session.is_Bot == is_bot_session).all()
+
+        session_list = [value for value, in query_result]
+
+        return session_list
+
+    def get_request_pattern_from_session(self, session_id):
+        query_result = self.session_creator.query(Request.request_type).filter(Request.session_id == session_id).order_by(Request.timestamp)
+
+        pattern_list = [value for value, in query_result]
+
+        return pattern_list
 
 
