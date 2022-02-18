@@ -24,13 +24,13 @@ class DataLoader:
 
         return session.session_id
 
-    def get_request_pattern(self, is_bot_pattern):
+    def get_request_pattern(self, is_bot_session):
         bot_pattern_list = []
 
-        bot_session_id_list = self.get_session_ids_from_sessions(is_bot_pattern)
+        session_id_list = self.get_session_ids_from_sessions(is_bot_session)
 
-        for bot_session_id in bot_session_id_list:
-            request_pattern = self.get_request_pattern_from_session(bot_session_id)
+        for session_id in session_id_list:
+            request_pattern = self.get_request_pattern_from_session(session_id)
             bot_pattern_list.append(request_pattern)
 
         return bot_pattern_list
