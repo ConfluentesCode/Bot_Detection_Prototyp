@@ -1,4 +1,8 @@
+from DetectionApproach.Services.RequestTypeConverter import RequestTypeConverter
+
+
 class TransitionMatrixCreator:
+    converter = RequestTypeConverter()
 
     def build(self, request_pattern_list):
         integer_request_pattern = self.request_pattern_converter(request_pattern_list)
@@ -18,7 +22,7 @@ class TransitionMatrixCreator:
         for row in matrix:
             row_sum = sum(row)
             if row_sum > 0:
-                row[:] = [f / row_sum for f in row]
+                row[:] = [cell_sum / row_sum for cell_sum in row]
         return matrix
 
     @staticmethod
@@ -33,18 +37,13 @@ class TransitionMatrixCreator:
 
         return global_number_of_states
 
-    @staticmethod
-    def request_pattern_converter(request_pattern_list):
+    def request_pattern_converter(self, request_pattern_list):
         converted_resource_pattern_list = []
-        converted_resource_pattern = []
 
-        for test_resource_pattern in request_pattern_list:
-            for resource in test_resource_pattern:
-                converted_resource = resource.value
-                converted_resource_pattern.append(converted_resource)
+        for resource_pattern in request_pattern_list:
+            converted_resource_pattern = self.converter.convert_request_pattern(resource_pattern)
 
             converted_resource_pattern_list.append(converted_resource_pattern)
-            converted_resource_pattern = []
 
         return converted_resource_pattern_list
 
