@@ -85,12 +85,15 @@ class AccessLogReader:
         resource_substring_split = resource_substring.split(' ')
 
         list_length = len(resource_substring_split)
-        resource = resource_substring_split[1]
+
+        if list_length > 1:
+            resource = resource_substring_split[1]
+            return resource
 
         if list_length != 3:
             return 'None'
 
-        return resource
+        return 'None'
 
     @staticmethod
     def get_http_version_from_access_log(access_log: str) -> str:
