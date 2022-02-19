@@ -1,10 +1,8 @@
 from DatabaseConnector.DatabaseSettings import SessionCreator
 from DatabaseConnector.Models.AccessLog import AccessLog
-from DatabaseConnector.Models.Session import Session
 from DatabaseConnector.Models.Request import Request
+from DatabaseConnector.Models.Session import Session
 
-
-# TODO ORM verstehen
 
 class DataSaver:
     session_creator = SessionCreator()
@@ -22,12 +20,19 @@ class DataSaver:
     # Annahme ist, dass der user-agent waehrend der sesssion identisch bleibt und die ip-addresse nur einmal auftaucht
     def save_user_session(self, ip_address, user_agent, is_bot):
         session_model = Session(session_ip_address=ip_address,
-                                session_useragent=user_agent, is_Bot=is_bot)
+                                session_useragent=user_agent, is_Bot=is_bot, )
         self.session_creator.add(session_model)
         self.session_creator.commit()
 
     def save_request_from_session(self, session_access_log, request_type, session_id):
-        request_model = Request(timestamp=session_access_log.timestamp, http_method=session_access_log.http_method, resource=session_access_log.resource, status_code=session_access_log.status_code, referer=session_access_log.referer, request_type=request_type,
+        request_model = Request(timestamp=session_access_log.timestamp, http_method=session_access_log.http_method,
+                                resource=session_access_log.resource, status_code=session_access_log.status_code,
+                                referer=session_access_log.referer, request_type=request_type,
                                 session_id=session_id)
         self.session_creator.add(request_model)
+        self.session_creator.commit()
+
+    def save_group_affiliation(self, group_session_id, group_type):
+        self.session_creator.query(Session).filter(Session.session_id == group_session_id).update(
+            {Session.group_affiliation: group_type})
         self.session_creator.commit()
