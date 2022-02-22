@@ -24,16 +24,24 @@ class DataLoader:
 
         return session.session_id
 
-    def get_request_pattern(self, is_bot_session):
+    def get_request_pattern(self, is_bot_session, set_type):
         bot_pattern_list = []
 
-        session_id_list = self.get_session_ids_from_sessions(is_bot_session)
+        session_id_list = self.get_session_ids_from_group(is_bot_session, set_type)
 
         for session_id in session_id_list:
             request_pattern = self.get_request_pattern_from_session(session_id)
             bot_pattern_list.append(request_pattern)
 
         return bot_pattern_list
+
+    def get_session_ids_from_group(self, is_bot_session, set_type):
+        query_result = self.session_creator.query(Session.session_id).filter(
+            and_(Session.is_Bot == is_bot_session, Session.group_affiliation == set_type)).all()
+
+        session_list = [value for value, in query_result]
+
+        return session_list
 
     def get_session_ids_from_sessions(self, is_bot_session):
         query_result = self.session_creator.query(Session.session_id).filter(Session.is_Bot == is_bot_session).all()
