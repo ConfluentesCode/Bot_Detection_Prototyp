@@ -1,30 +1,21 @@
+import datetime
 from DataPreparator.Constants import PathConstants
-from DataPreparator.Services.AccessLogReader import AccessLogReader
 from DataPreparator.Services.UserSessionBuilder import UserSessionBuilder
-from DatabaseConnector.Services.DataSaver import DataSaver
 from DatabaseConnector.Services.DataLoader import DataLoader
-
 
 file_path = PathConstants.ACCESS_LOG_FILE_PATH
 
 FILL_DATABASE_TOGGLE = True
 
 if __name__ == '__main__':
-    # get information from access logs
-    file_reader = AccessLogReader()
-    access_log_list = file_reader.read_file(file_path)
-
-    # write information from access log in sqlite database
-    if FILL_DATABASE_TOGGLE:
-        data_saver = DataSaver()
-        data_saver.save_access_log_list(access_log_list)
-
     # get data from sqlite database
     data_loader = DataLoader()
     user_ip_list = data_loader.get_users_from_access_log()
+    print('get user list', datetime.datetime.now())
+
 
     # create Sessions from AccessLogs
 
     session_builder = UserSessionBuilder()
     session_builder.create_user_sessions(user_ip_list)
-
+    print('build sessions', datetime.datetime.now())
