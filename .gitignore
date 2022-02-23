@@ -23,3 +23,7 @@ DataPreparator/Constants/__pycache__/
 DataPreparator/Enums/__pycache__/
 
 DataPreparator/Services/__pycache__/
+
+DetectionApproach/MarkovChain/__pycache__/
+
+DetectionApproach/Services/__pycache__/
