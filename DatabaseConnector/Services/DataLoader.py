@@ -2,6 +2,11 @@ from DatabaseConnector.DatabaseSettings import SessionCreator
 from DatabaseConnector.Models.AccessLog import AccessLog
 from DatabaseConnector.Models.Session import Session
 from DatabaseConnector.Models.Request import Request
+from DatabaseConnector.Models.Result import Result
+
+from DataPreparator.Enums.GroupAffiliation import GroupAffiliation
+
+from sqlalchemy import and_
 
 
 class DataLoader:
@@ -51,10 +56,33 @@ class DataLoader:
         return session_list
 
     def get_request_pattern_from_session(self, session_id):
-        query_result = self.session_creator.query(Request.request_type).filter(Request.session_id == session_id).order_by(Request.timestamp)
+        query_result = self.session_creator.query(Request.request_type).filter(
+            Request.session_id == session_id).order_by(Request.timestamp)
 
         pattern_list = [value for value, in query_result]
 
         return pattern_list
+
+    def get_session_ids_and_pattern_from_test_set(self):
+        query_result = self.session_creator.query(Session).filter(
+            Session.group_affiliation == GroupAffiliation.TEST).with_entities(Session.session_id).all()
+
+        session_list = [value for value, in query_result]
+
+        session_with_pattern_list = []
+
+        for session in session_list:
+            session_with_pattern = self.get_request_pattern_and_session_id(session)
+            session_with_pattern_list.append(session_with_pattern)
+
+        return session_with_pattern_list
+
+    def get_request_pattern_and_session_id(self, session_id):
+        query_result = self.session_creator.query(Request).filter(Request.session_id == session_id).with_entities(
+            Request.request_type).order_by(Request.timestamp)
+
+        pattern_list = [value for value, in query_result]
+
+        return session_id, pattern_list
 
 

@@ -2,6 +2,7 @@ from DatabaseConnector.DatabaseSettings import SessionCreator
 from DatabaseConnector.Models.AccessLog import AccessLog
 from DatabaseConnector.Models.Request import Request
 from DatabaseConnector.Models.Session import Session
+from DatabaseConnector.Models.Result import Result
 
 
 class DataSaver:
@@ -35,4 +36,13 @@ class DataSaver:
     def save_group_affiliation(self, group_session_id, group_type):
         self.session_creator.query(Session).filter(Session.session_id == group_session_id).update(
             {Session.group_affiliation: group_type})
+        self.session_creator.commit()
+
+    def save_test_result(self, test_result):
+        session_id = test_result[0]
+        chain_decision = test_result[1]
+
+        result_model = Result(session_id=session_id, is_bot_chain_decision= chain_decision)
+
+        self.session_creator.add(result_model)
         self.session_creator.commit()

@@ -13,3 +13,4 @@ class Session(Base):
     is_Bot = Column(Boolean, nullable=True)
     group_affiliation = Column(Enum(GroupAffiliation))
     requests = relationship('Request', backref='request_session')
+    result = relationship('Result', backref='result_session')
