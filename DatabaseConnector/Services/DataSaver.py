@@ -1,8 +1,11 @@
+from datetime import datetime
+
 from DatabaseConnector.DatabaseSettings import SessionCreator
 from DatabaseConnector.Models.AccessLog import AccessLog
 from DatabaseConnector.Models.Request import Request
 from DatabaseConnector.Models.Session import Session
 from DatabaseConnector.Models.Result import Result
+from DatabaseConnector.Models.ScoringParameters import ScoringParameters
 
 
 class DataSaver:
@@ -45,4 +48,10 @@ class DataSaver:
         result_model = Result(session_id=session_id, is_bot_chain_decision= chain_decision)
 
         self.session_creator.add(result_model)
+        self.session_creator.commit()
+
+    def save_performance_parameter(self, detection_approach, precision, recall, accuracy, f1):
+        parameter_model = ScoringParameters(test_date=datetime.now(), detection_approach=detection_approach, recall=recall, precision=precision, f1=f1, accuracy=accuracy)
+
+        self.session_creator.add(parameter_model)
         self.session_creator.commit()

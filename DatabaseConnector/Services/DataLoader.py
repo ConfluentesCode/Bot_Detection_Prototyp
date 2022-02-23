@@ -85,4 +85,18 @@ class DataLoader:
 
         return session_id, pattern_list
 
+    def get_result_session_ids(self):
+        query_results = self.session_creator.query(Result).with_entities(Result.session_id).all()
+
+        result_session_ids = [value for value, in query_results]
+
+        return result_session_ids
+
+    def get_ground_truth_and_decision(self, session_id):
+        query_result = self.session_creator.query(Session).join(Result).filter(Session.session_id == session_id).all()
+
+        ground_truth_decision = query_result[0].is_Bot
+        detection_decision = query_result[0].result[0].is_bot_chain_decision
+
+        return ground_truth_decision, detection_decision
 
