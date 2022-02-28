@@ -37,12 +37,10 @@ class DataSaver:
         self.session_creator.commit()
 
     def save_test_result(self, group_id, test_result):
-
-    def save_test_result(self, test_result):
         session_id = test_result[0]
         chain_decision = test_result[1]
 
-        result_model = Result(session_id=session_id, is_bot_chain_decision=chain_decision)
+        result_model = Result(session_id=session_id, group_id=group_id, is_bot_chain_decision=chain_decision)
 
         self.session_creator.add(result_model)
         self.session_creator.commit()
@@ -52,8 +50,4 @@ class DataSaver:
                                             recall=recall, precision=precision, f1=f1, accuracy=accuracy)
 
         self.session_creator.add(parameter_model)
-        self.session_creator.commit()
-
-    def clear_result_table(self):
-        self.session_creator.query(Result).delete()
         self.session_creator.commit()

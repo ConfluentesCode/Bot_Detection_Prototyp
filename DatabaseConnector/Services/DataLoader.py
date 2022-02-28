@@ -67,8 +67,9 @@ class DataLoader:
 
         return session_id, pattern_list
 
-    def get_result_session_ids(self):
-        query_results = self.session_creator.query(Result).with_entities(Result.session_id).all()
+    def get_result_session_ids_from_group(self, group_id):
+        query_results = self.session_creator.query(Result).filter(Result.group_id == group_id).with_entities(
+            Result.session_id).all()
 
         result_session_ids = [value for value, in query_results]
 

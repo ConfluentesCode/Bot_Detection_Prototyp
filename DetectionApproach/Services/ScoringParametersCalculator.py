@@ -15,8 +15,8 @@ class ScoringParametersCalculator:
     # True False
     false_negative = 0
 
-    def calculate_scoring_parameters(self, detection_approach):
-        result_session_ids = self.data_loader.get_result_session_ids()
+    def calculate_scoring_parameters(self, detection_approach, group_id):
+        result_session_ids = self.data_loader.get_result_session_ids_from_group(group_id)
 
         for result_session_id in result_session_ids:
             decision_result = self.data_loader.get_ground_truth_and_decision(result_session_id)
