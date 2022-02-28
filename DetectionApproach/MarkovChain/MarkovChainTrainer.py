@@ -1,4 +1,3 @@
-from DataPreparator.Enums.GroupAffiliation import GroupAffiliation
 from DatabaseConnector.Services.DataLoader import DataLoader
 from DetectionApproach.MarkovChain.Chain import Chain
 

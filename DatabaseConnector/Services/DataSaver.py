@@ -36,10 +36,7 @@ class DataSaver:
         self.session_creator.add(request_model)
         self.session_creator.commit()
 
-    def save_group_affiliation(self, group_session_id, group_type):
-        self.session_creator.query(Session).filter(Session.session_id == group_session_id).update(
-            {Session.group_affiliation: group_type})
-        self.session_creator.commit()
+    def save_test_result(self, group_id, test_result):
 
     def save_test_result(self, test_result):
         session_id = test_result[0]

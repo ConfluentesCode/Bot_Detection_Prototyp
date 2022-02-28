@@ -4,10 +4,6 @@ from DatabaseConnector.Models.Session import Session
 from DatabaseConnector.Models.Request import Request
 from DatabaseConnector.Models.Result import Result
 
-from DataPreparator.Enums.GroupAffiliation import GroupAffiliation
-
-from sqlalchemy import and_
-
 
 class DataLoader:
     session_creator = SessionCreator()
@@ -37,14 +33,6 @@ class DataLoader:
             pattern_list.append(request_pattern)
 
         return pattern_list
-
-    def get_session_ids_from_group(self, is_bot_session, set_type):
-        query_result = self.session_creator.query(Session.session_id).filter(
-            and_(Session.is_Bot == is_bot_session, Session.group_affiliation == set_type)).all()
-
-        session_list = [value for value, in query_result]
-
-        return session_list
 
     def get_session_ids_from_sessions(self, is_bot_session):
         query_result = self.session_creator.query(Session.session_id).filter(Session.is_Bot == is_bot_session).all()
