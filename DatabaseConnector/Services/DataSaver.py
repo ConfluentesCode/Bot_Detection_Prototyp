@@ -38,9 +38,12 @@ class DataSaver:
 
     def save_test_result(self, group_id, test_result):
         session_id = test_result[0]
-        chain_decision = test_result[1]
+        human_prob = test_result[1]
+        bot_prob = test_result[2]
+        chain_decision = test_result[3]
 
-        result_model = Result(session_id=session_id, group_id=group_id, is_bot_chain_decision=chain_decision)
+        result_model = Result(session_id=session_id, group_id=group_id, human_prob=human_prob, bot_prob=bot_prob,
+                              is_bot_decision=chain_decision)
 
         self.session_creator.add(result_model)
         self.session_creator.commit()

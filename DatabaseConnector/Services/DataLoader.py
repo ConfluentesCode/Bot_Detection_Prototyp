@@ -79,7 +79,7 @@ class DataLoader:
         query_result = self.session_creator.query(Session).join(Result).filter(Session.session_id == session_id).all()
 
         ground_truth_decision = query_result[0].is_Bot
-        detection_decision = query_result[0].result[0].is_bot_chain_decision
+        detection_decision = query_result[0].result[0].is_bot_decision
 
         return ground_truth_decision, detection_decision
 

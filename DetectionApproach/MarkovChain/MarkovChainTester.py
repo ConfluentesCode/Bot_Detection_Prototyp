@@ -25,10 +25,10 @@ class MarkovChainTester:
         bot_prob = self.probability_calculator.calculate_pattern_probability(bot_chain, request_pattern)
 
         if bot_prob > human_prob:
-            return session_id, True
+            return session_id, human_prob, bot_prob, True
 
         if bot_prob < human_prob:
-            return session_id, False
+            return session_id, human_prob, bot_prob, False
 
-        return session_id, None
+        return session_id, human_prob, bot_prob, None
 
