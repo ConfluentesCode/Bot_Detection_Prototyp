@@ -7,14 +7,23 @@ class MarkovChainTrainer:
     markov_chain = Chain()
     data_loader = DataLoader()
 
-    def train_human_chain(self):
-        human_training_pattern = self.data_loader.get_request_pattern(False, GroupAffiliation.TRAINING)
-        human_chain = self.markov_chain.build(human_training_pattern)
+    def train_chain(self, session_ids):
+        training_pattern = self.data_loader.get_request_pattern(session_ids)
+        chain = self.markov_chain.build(training_pattern)
 
-        return human_chain
+        return chain
 
-    def train_bot_chain(self):
-        bot_training_pattern = self.data_loader.get_request_pattern(True, GroupAffiliation.TRAINING)
-        bot_chain = self.markov_chain.build(bot_training_pattern)
+    def group_ids_in_bot_and_human(self, session_ids):
+        human_set = []
+        bot_set = []
 
-        return bot_chain
+        for session_id in session_ids:
+            is_bot = self.data_loader.is_session_from_bot(session_id)
+
+            if is_bot is True:
+                bot_set.append(session_id)
+
+            if is_bot is False:
+                human_set.append(session_id)
+
+        return human_set, bot_set

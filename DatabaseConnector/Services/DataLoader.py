@@ -29,16 +29,14 @@ class DataLoader:
 
         return session.session_id
 
-    def get_request_pattern(self, is_bot_session, set_type):
-        bot_pattern_list = []
-
-        session_id_list = self.get_session_ids_from_group(is_bot_session, set_type)
+    def get_request_pattern(self, session_id_list):
+        pattern_list = []
 
         for session_id in session_id_list:
             request_pattern = self.get_request_pattern_from_session(session_id)
-            bot_pattern_list.append(request_pattern)
+            pattern_list.append(request_pattern)
 
-        return bot_pattern_list
+        return pattern_list
 
     def get_session_ids_from_group(self, is_bot_session, set_type):
         query_result = self.session_creator.query(Session.session_id).filter(
@@ -63,11 +61,7 @@ class DataLoader:
 
         return pattern_list
 
-    def get_session_ids_and_pattern_from_test_set(self):
-        query_result = self.session_creator.query(Session).filter(
-            Session.group_affiliation == GroupAffiliation.TEST).with_entities(Session.session_id).all()
-
-        session_list = [value for value, in query_result]
+    def get_session_ids_and_pattern_from_id_list(self, session_list):
 
         session_with_pattern_list = []
 
@@ -100,3 +94,15 @@ class DataLoader:
 
         return ground_truth_decision, detection_decision
 
+    def get_all_session_ids(self):
+        query_result = self.session_creator.query(Session).with_entities(Session.session_id).all()
+
+        session_id_list = [value for value, in query_result]
+
+        return session_id_list
+
+    def is_session_from_bot(self, session_id):
+        result = self.session_creator.query(Session).filter(Session.session_id == session_id).with_entities(
+            Session.is_Bot).first()
+
+        return result.is_Bot
