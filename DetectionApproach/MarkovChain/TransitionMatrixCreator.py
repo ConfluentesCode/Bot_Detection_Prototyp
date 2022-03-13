@@ -10,6 +10,7 @@ class TransitionMatrixCreator:
 
         return transition_matrix
 
+    # in manner of https://stackoverflow.com/questions/46657221/generating-markov-transition-matrix-in-python/46657489
     def create_transition_matrix(self, transitions):
         number_of_states = self.get_number_of_states(transitions)
 
