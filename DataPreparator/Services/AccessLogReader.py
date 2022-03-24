@@ -9,6 +9,7 @@ class AccessLogReader:
 
     def __init__(self):
         self.access_log_list = []
+        self.row_counter = 0
 
     def read_file(self, file_path: str) -> list:
         with open(file_path) as file:
@@ -17,6 +18,8 @@ class AccessLogReader:
             for row in reader:
                 value_set = AccessLogReader.extract_values_from_row(row)
                 self.access_log_list.append(value_set)
+                self.row_counter += 1
+                print('read row:', self.row_counter)
 
         return self.access_log_list
 

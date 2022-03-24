@@ -1,3 +1,5 @@
+import datetime
+
 from DatabaseConnector.Services.DataSaver import DataSaver
 from DatabaseConnector.Services.DataLoader import DataLoader
 from DataPreparator.Services.BotSessionIdentifier import BotSessionIdentifier
@@ -8,6 +10,7 @@ class UserSessionBuilder:
     data_loader = DataLoader()
     data_saver = DataSaver()
     session_identifier = BotSessionIdentifier()
+    number_of_sessions = 0
 
     def create_user_sessions(self, user_ip_list: list):
 
@@ -24,6 +27,10 @@ class UserSessionBuilder:
 
         self.data_saver.save_user_session(session_ip, session_user_agent, is_bot_session)
         self.safe_requests_of_session(session_access_logs, user_ip)
+
+        self.number_of_sessions += 1
+
+        print('Number of Sessions: ', self.number_of_sessions)
 
     def safe_requests_of_session(self, user_access_log, user_ip):
         session_id = self.get_session_id_of_user(user_ip)

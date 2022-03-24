@@ -1,3 +1,5 @@
+import datetime
+
 from DataPreparator.Constants import PathConstants
 from DataPreparator.Services.AccessLogReader import AccessLogReader
 from DatabaseConnector.Services.DataSaver import DataSaver
@@ -5,7 +7,7 @@ from DatabaseConnector.Services.DataSaver import DataSaver
 file_path = PathConstants.ACCESS_LOG_FILE_PATH
 
 if __name__ == '__main__':
-    print('start proto-typ')
+    print('start Access-Log-Reader', datetime.datetime.now())
 
     # get information from access logs
     file_reader = AccessLogReader()
@@ -15,3 +17,5 @@ if __name__ == '__main__':
 
     data_saver = DataSaver()
     data_saver.save_access_log_list(access_log_list)
+
+    print('end Access-Log-Reader', datetime.datetime.now())

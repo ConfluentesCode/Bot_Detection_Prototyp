@@ -8,6 +8,8 @@ file_path = PathConstants.ACCESS_LOG_FILE_PATH
 FILL_DATABASE_TOGGLE = True
 
 if __name__ == '__main__':
+    print('start Session-Builder', datetime.datetime.now())
+
     # get data from sqlite database
     data_loader = DataLoader()
     user_ip_list = data_loader.get_users_from_access_log()
@@ -19,3 +21,5 @@ if __name__ == '__main__':
     session_builder = UserSessionBuilder()
     session_builder.create_user_sessions(user_ip_list)
     print('build sessions', datetime.datetime.now())
+
+    print('end Session-Builder', datetime.datetime.now())
