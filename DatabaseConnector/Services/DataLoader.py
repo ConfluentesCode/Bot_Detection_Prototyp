@@ -90,6 +90,13 @@ class DataLoader:
 
         return session_id_list
 
+    def get_all_session_ids_with_ground_truth(self):
+        query_result = self.session_creator.query(Session).with_entities(Session.session_id, Session.is_Bot).all()
+
+        session_id_list, ground_truth_list = zip(*query_result)
+
+        return session_id_list, ground_truth_list
+
     def is_session_from_bot(self, session_id):
         result = self.session_creator.query(Session).filter(Session.session_id == session_id).with_entities(
             Session.is_Bot).first()

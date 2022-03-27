@@ -13,7 +13,7 @@ if __name__ == '__main__':
     parameter_calculator = ScoringParametersCalculator()
     fold_group_id = 0
 
-    kfold_sets = kfold.split_session_ids_with_k_fold(2)
+    kfold_sets = stra_kfold.split_session_ids_with_stratified_k_fold(10)
 
     for kfold_set in kfold_sets:
         fold_group_id += 1
