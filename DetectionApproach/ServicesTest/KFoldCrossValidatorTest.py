@@ -3,6 +3,7 @@ import unittest
 from DetectionApproach.Services.KFoldCrossValidator import KFoldCrossValidator
 
 
+# TODO fix test -> DB-Mock
 class KFoldCrossValidatorTest(unittest.TestCase):
     cross_validator = KFoldCrossValidator()
 
@@ -21,6 +22,6 @@ class KFoldCrossValidatorTest(unittest.TestCase):
                           ([1, 2, 3, 4, 5, 6, 7, 8, 10], [9]),
                           ([1, 2, 3, 4, 5, 6, 7, 8, 9], [10])]
 
-        result = self.cross_validator.split_session_ids_in_k_fold(number_of_folds, test_session_ids)
+        result = self.cross_validator.split_session_ids_with_k_fold(number_of_folds)
 
         self.assertEqual(result, expected_split)
