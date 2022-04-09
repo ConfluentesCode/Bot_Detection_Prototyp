@@ -1,8 +1,8 @@
 from DetectionApproach.MarkovChain.MarkovChainTester import MarkovChainTester
 from DetectionApproach.MarkovChain.MarkovChainTrainer import MarkovChainTrainer
-from DetectionApproach.Services.KFoldCrossValidator import KFoldCrossValidator
-from DetectionApproach.Services.StratifiedKFoldCrossValidator import StratifiedKFoldCrossValidator
-from DetectionApproach.Services.ScoringParametersCalculator import ScoringParametersCalculator
+from DetectionApproach.Services.StatisticalResultsService.KFoldCrossValidator import KFoldCrossValidator
+from DetectionApproach.Services.StatisticalResultsService.StratifiedKFoldCrossValidator import StratifiedKFoldCrossValidator
+from DetectionApproach.Services.StatisticalResultsService.ScoringParametersCalculator import ScoringParametersCalculator
 from datetime import datetime
 
 if __name__ == '__main__':

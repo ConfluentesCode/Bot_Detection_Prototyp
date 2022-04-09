@@ -29,3 +29,5 @@ DetectionApproach/MarkovChain/__pycache__/
 DetectionApproach/Services/__pycache__/
 
 DetectionApproach/Services/ProcessHelperService/__pycache__/
+
+DetectionApproach/Services/StatisticalResultsService/__pycache__/

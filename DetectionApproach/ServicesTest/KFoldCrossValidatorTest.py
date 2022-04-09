@@ -1,6 +1,6 @@
 import unittest
 
-from DetectionApproach.Services.KFoldCrossValidator import KFoldCrossValidator
+from DetectionApproach.Services.StatisticalResultsService.KFoldCrossValidator import KFoldCrossValidator
 
 
 # TODO fix test -> DB-Mock

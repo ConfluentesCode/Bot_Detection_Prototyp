@@ -1,6 +1,6 @@
 import unittest
 
-from DetectionApproach.Services.ScoringParametersCalculator import ScoringParametersCalculator
+from DetectionApproach.Services.StatisticalResultsService.ScoringParametersCalculator import ScoringParametersCalculator
 
 
 class ScoringParametersCalculatorTest(unittest.TestCase):
