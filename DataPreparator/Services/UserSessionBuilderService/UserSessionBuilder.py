@@ -1,9 +1,7 @@
-import datetime
-
 from DatabaseConnector.Services.DataSaver import DataSaver
 from DatabaseConnector.Services.DataLoader import DataLoader
-from DataPreparator.Services.BotSessionIdentifier import BotSessionIdentifier
-from DataPreparator.Services.RequestTypeExtractor import RequestTypeExtractor
+from DataPreparator.Services.UserSessionBuilderService.BotSessionIdentifier import BotSessionIdentifier
+from DataPreparator.Services.UserSessionBuilderService.RequestTypeExtractor import RequestTypeExtractor
 
 
 class UserSessionBuilder:

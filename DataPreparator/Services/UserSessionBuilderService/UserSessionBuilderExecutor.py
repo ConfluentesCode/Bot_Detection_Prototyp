@@ -1,6 +1,5 @@
 import datetime
-from DataPreparator.Constants import PathConstants
-from DataPreparator.Services.UserSessionBuilder import UserSessionBuilder
+from DataPreparator.Services.UserSessionBuilderService.UserSessionBuilder import UserSessionBuilder
 from DatabaseConnector.Services.DataLoader import DataLoader
 
 if __name__ == '__main__':
