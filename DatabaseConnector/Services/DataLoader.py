@@ -90,6 +90,20 @@ class DataLoader:
 
         return session_id_list
 
+    def get_all_bot_session_ids(self):
+        query_result = self.session_creator.query(Session).filter(Session.is_Bot == True).with_entities(Session.session_id).all()
+
+        session_id_list = [value for value, in query_result]
+
+        return session_id_list
+
+    def get_all_human_session_ids(self):
+        query_result = self.session_creator.query(Session).filter(Session.is_Bot == False).with_entities(Session.session_id).all()
+
+        session_id_list = [value for value, in query_result]
+
+        return session_id_list
+
     def get_all_session_ids_with_ground_truth(self):
         query_result = self.session_creator.query(Session).with_entities(Session.session_id, Session.is_Bot).all()
 
@@ -102,3 +116,12 @@ class DataLoader:
             Session.is_Bot).first()
 
         return result.is_Bot
+
+    def get_decision_and_probabilities(self, session_id):
+        result = self.session_creator.query(Result).filter(Result.session_id == session_id).all()
+
+        decision = result[0].is_bot_decision
+        human_prob = result[0].human_prob
+        bot_prob = result[0].bot_prob
+
+        return decision, human_prob, bot_prob
