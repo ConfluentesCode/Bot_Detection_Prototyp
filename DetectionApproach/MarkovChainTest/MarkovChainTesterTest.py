@@ -37,7 +37,7 @@ class MarkovChainTesterTest(unittest.TestCase):
         result = self.chain_tester.compare_probabilities_of_session(test_human_chain, test_bot_chain, test_pattern)
 
         result_id = result[0]
-        result_decision = result[1]
+        result_decision = result[3]
 
         self.assertEqual(1, result_id)
         self.assertEqual(None, result_decision)
@@ -71,7 +71,7 @@ class MarkovChainTesterTest(unittest.TestCase):
         result = self.chain_tester.compare_probabilities_of_session(test_human_chain, test_bot_chain, test_pattern)
 
         result_id = result[0]
-        result_decision = result[1]
+        result_decision = result[3]
 
         self.assertEqual(1, result_id)
         self.assertEqual(True, result_decision)
