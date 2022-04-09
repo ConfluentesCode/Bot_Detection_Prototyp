@@ -1,7 +1,7 @@
 import unittest
 
 import datetime
-from DataPreparator.Services.AccessLogReader import AccessLogReader
+from DataPreparator.Services.AccessLogReaderService.AccessLogReader import AccessLogReader
 
 
 class AccessLogReaderTest(unittest.TestCase):

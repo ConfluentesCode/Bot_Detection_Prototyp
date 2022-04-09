@@ -1,7 +1,7 @@
 import datetime
 
 from DataPreparator.Constants import PathConstants
-from DataPreparator.Services.AccessLogReader import AccessLogReader
+from DataPreparator.Services.AccessLogReaderService.AccessLogReader import AccessLogReader
 from DatabaseConnector.Services.DataSaver import DataSaver
 
 file_path = PathConstants.ACCESS_LOG_FILE_PATH

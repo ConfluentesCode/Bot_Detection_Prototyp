@@ -31,3 +31,5 @@ DetectionApproach/Services/__pycache__/
 DetectionApproach/Services/ProcessHelperService/__pycache__/
 
 DetectionApproach/Services/StatisticalResultsService/__pycache__/
+
+DataPreparator/Services/AccessLogReaderService/__pycache__/
