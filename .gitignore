@@ -10,8 +10,6 @@ Models/__pycache__/
 
 Services/__pycache__/
 
-InputFiles/
-
 DatabaseConnector/Database
 
 DatabaseConnector/Services/__pycache__/
@@ -35,3 +33,7 @@ DetectionApproach/Services/StatisticalResultsService/__pycache__/
 DataPreparator/Services/AccessLogReaderService/__pycache__/
 
 DataPreparator/Services/UserSessionBuilderService/__pycache__/
+
+DataPreparator/InputFiles/logfiles_iran_short.log
+
+DataPreparator/InputFiles/logfiles_iran.log
