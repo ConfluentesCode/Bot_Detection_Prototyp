@@ -27,3 +27,5 @@ DataPreparator/Services/__pycache__/
 DetectionApproach/MarkovChain/__pycache__/
 
 DetectionApproach/Services/__pycache__/
+
+DetectionApproach/Services/ProcessHelperService/__pycache__/

@@ -1,5 +1,5 @@
 from DataPreparator.Enums.RequestType import RequestType
-from DetectionApproach.Services.RequestTypeConverter import RequestTypeConverter
+from DetectionApproach.Services.ProcessHelperService.RequestTypeConverter import RequestTypeConverter
 
 
 class StartVectorCreator:

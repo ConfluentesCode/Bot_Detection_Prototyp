@@ -1,6 +1,6 @@
 import numpy
 
-from DetectionApproach.Services.RequestTypeConverter import RequestTypeConverter
+from DetectionApproach.Services.ProcessHelperService.RequestTypeConverter import RequestTypeConverter
 
 
 class MarkovProbabilityCalculator:
