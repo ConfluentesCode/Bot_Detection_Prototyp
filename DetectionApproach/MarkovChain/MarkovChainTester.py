@@ -1,13 +1,10 @@
 from DatabaseConnector.Services.DataLoader import DataLoader
 from DatabaseConnector.Services.DataSaver import DataSaver
 from DetectionApproach.MarkovChain.MarkovProbabilityCalculator import MarkovProbabilityCalculator
-from DetectionApproach.Services.RequestTypeConverter import RequestTypeConverter
-
 
 class MarkovChainTester:
     data_loader = DataLoader()
     data_saver = DataSaver()
-    type_converter = RequestTypeConverter()
     probability_calculator = MarkovProbabilityCalculator()
 
     def test_trained_chain(self, group_id, human_chain, bot_chain, test_session_ids):

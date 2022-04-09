@@ -3,10 +3,6 @@ from DataPreparator.Constants import PathConstants
 from DataPreparator.Services.UserSessionBuilder import UserSessionBuilder
 from DatabaseConnector.Services.DataLoader import DataLoader
 
-file_path = PathConstants.ACCESS_LOG_FILE_PATH
-
-FILL_DATABASE_TOGGLE = True
-
 if __name__ == '__main__':
     print('start Session-Builder', datetime.datetime.now())
 
